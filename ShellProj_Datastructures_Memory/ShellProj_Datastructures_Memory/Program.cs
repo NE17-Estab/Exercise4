@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShellProj_Datastructures_Memory
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// The main method, will handle the menues for the program
@@ -14,7 +14,9 @@ namespace ShellProj_Datastructures_Memory
         /// <param name="args"></param>
         static void Main()
         {
+
             bool run = true;
+
             while (true)
             {
 
@@ -61,10 +63,11 @@ namespace ShellProj_Datastructures_Memory
             }
         }
 
+
         /// <summary>
         /// Examines the datastructure List
         /// </summary>
-        static void ExamineList()
+       public static void ExamineList()
         {
             /*
              * Loop this method untill the user inputs something to exit to main menue.
@@ -75,47 +78,89 @@ namespace ShellProj_Datastructures_Memory
              * As a default case, tell them to use only + or -
              * Below you can see some inspirational code to begin working.
             */
+            List<string> theList = new List<string>();
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
+            bool move = true;
 
-            //switch(nav){...}
+            while (true)
+            {
+                Console.WriteLine("Give a word with + or - so that it adds or sub the word form the list:");
+
+                string input = Console.ReadLine();
+                char nav = input[0];
+                string value;
+                int sizeOflist = 0;
+
+
+                switch (nav)
+                {
+                    case '+':
+                        value = input.Substring(1);
+                        theList.Add(value);
+                        sizeOflist = theList.Count;
+                        Console.WriteLine("display the list added:"+value);
+                        Console.WriteLine("list added:"+ value);
+                        break;
+                    case '-':
+                        value = input.Substring(1);
+                        theList.Remove(value);
+                        sizeOflist = theList.Count;
+                        Console.WriteLine("display the list sub:"+value);
+                        Console.WriteLine("list sub:" + value);
+                        break;
+                    case '0':
+                        return;
+
+
+                }
+                Console.WriteLine(sizeOflist);
+
+
+            }
+
         }
-
-        /// <summary>
-        /// Examines the datastructure Queue
-        /// </summary>
-        static void ExamineQueue()
+            /// <summary>
+            /// Examines the datastructure Queue
+            /// </summary>
+             public static void ExamineQueue()
         {
-            /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch with cases to enqueue items or dequeue items
-             * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
-            */
-        }
+          
+                //string input = Console.ReadLine();
+                //char nav = input[0];
+                //string value;
+                //int
+            }
 
-        /// <summary>
-        /// Examines the datastructure Stack
-        /// </summary>
-        static void ExamineStack()
+
+                /*
+                 * Loop this method untill the user inputs something to exit to main menue.
+                 * Create a switch with cases to enqueue items or dequeue items
+                 * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
+                */
+            }
+
+            /// <summary>
+            /// Examines the datastructure Stack
+            /// </summary>
+            static void ExamineStack()
         {
-            /*
-             * Loop this method until the user inputs something to exit to main menue.
-             * Create a switch with cases to push or pop items
-             * Make sure to look at the stack after pushing and and poping to see how it behaves
-            */
-        }
+                /*
+                 * Loop this method until the user inputs something to exit to main menue.
+                 * Create a switch with cases to push or pop items
+                 * Make sure to look at the stack after pushing and and poping to see how it behaves
+                */
+            }
 
-        static void CheckParanthesis()
+            static void CheckParanthesis()
         {
-            /*
-             * Use this method to check if the paranthesis in a string is Correct or incorrect.
-             * Example of correct: (()), {}, [({})]
-             * Example of incorrect: (()]), [), {[()}]
-             */
-        }
+                /*
+                 * Use this method to check if the paranthesis in a string is Correct or incorrect.
+                 * Example of correct: (()), {}, [({})]
+                 * Example of incorrect: (()]), [), {[()}]
+                 */
+            }
 
+        }
     }
-}
+
+
