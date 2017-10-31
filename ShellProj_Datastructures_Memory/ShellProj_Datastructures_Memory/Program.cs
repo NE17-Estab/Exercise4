@@ -60,6 +60,7 @@ namespace ShellProj_Datastructures_Memory
                         Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
                         break;
                 }
+
             }
         }
 
@@ -83,6 +84,8 @@ namespace ShellProj_Datastructures_Memory
             bool move = true;
 
             while (true)
+            //    Console.Clear();
+            //Console.ReadLine();
             {
                 Console.WriteLine("Give a word with + or - so that it adds or sub the word form the list:");
 
@@ -110,9 +113,19 @@ namespace ShellProj_Datastructures_Memory
                         break;
                     case '0':
                         return;
+                    default:
+                        break;
+
+                        //foreach (var item in theList)
+                        //{
+                        //    Console.WriteLine("List added:"+item);
+                        //}
+                        //Console.WriteLine("total value added to list:"+theList.Count);
+                        //Console.WriteLine("Capacity of the list:"+theList.Capacity);
 
 
                 }
+                
                 Console.WriteLine(sizeOflist);
 
 
@@ -124,7 +137,48 @@ namespace ShellProj_Datastructures_Memory
             /// </summary>
              public static void ExamineQueue()
         {
-          
+            Queue<string> Testqueue = new Queue<string>();
+            int Qsize;
+
+            List<string> theList = new List<string>();
+            while (true)
+
+            {
+                Console.WriteLine("Enter + to add name in queue and - to delete first name from queue:");
+                string input = Console.ReadLine();
+                char nav = input[0];
+                switch (nav)
+                {
+                    case '+':
+                        Console.WriteLine("Enter your name:");
+                        string inputname = Console.ReadLine();
+                        Testqueue.Enqueue(inputname);
+                        Qsize = Testqueue.Count;
+                        Console.WriteLine("The current Queue size is:" + Qsize);
+                        break;
+
+                    case '-':
+
+
+                        Testqueue.Dequeue();
+                        Qsize = Testqueue.Count;
+                        Console.WriteLine("queue has " + Qsize + " people below");
+                        foreach (var item in Testqueue)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        break;
+
+                    case '0':
+                        return;
+                    default:
+                        break;
+                }
+            
+
+
+                
+
                 //string input = Console.ReadLine();
                 //char nav = input[0];
                 //string value;
