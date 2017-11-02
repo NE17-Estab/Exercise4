@@ -8,6 +8,9 @@ namespace ShellProj_Datastructures_Memory
 {
     public class Program
     {
+        private static object items;
+        private static object stack;
+
         /// <summary>
         /// The main method, will handle the menues for the program
         /// </summary>
@@ -68,7 +71,7 @@ namespace ShellProj_Datastructures_Memory
         /// <summary>
         /// Examines the datastructure List
         /// </summary>
-       public static void ExamineList()
+        public static void ExamineList()
         {
             /*
              * Loop this method untill the user inputs something to exit to main menue.
@@ -101,14 +104,14 @@ namespace ShellProj_Datastructures_Memory
                         value = input.Substring(1);
                         theList.Add(value);
                         sizeOflist = theList.Count;
-                        Console.WriteLine("display the list added:"+value);
-                        Console.WriteLine("list added:"+ value);
+                        Console.WriteLine("display the list added:" + value);
+                        Console.WriteLine("list added:" + value);
                         break;
                     case '-':
                         value = input.Substring(1);
                         theList.Remove(value);
                         sizeOflist = theList.Count;
-                        Console.WriteLine("display the list sub:"+value);
+                        Console.WriteLine("display the list sub:" + value);
                         Console.WriteLine("list sub:" + value);
                         break;
                     case '0':
@@ -125,17 +128,17 @@ namespace ShellProj_Datastructures_Memory
 
 
                 }
-                
+
                 Console.WriteLine(sizeOflist);
 
 
             }
 
         }
-            /// <summary>
-            /// Examines the datastructure Queue
-            /// </summary>
-             public static void ExamineQueue()
+        /// <summary>
+        /// Examines the datastructure Queue
+        /// </summary>
+        public static void ExamineQueue()
         {
             Queue<string> Testqueue = new Queue<string>();
             int Qsize;
@@ -144,6 +147,7 @@ namespace ShellProj_Datastructures_Memory
             while (true)
 
             {
+                Console.WriteLine("First In First Out Principle:");
                 Console.WriteLine("Enter + to add name in queue and - to delete first name from queue:");
                 string input = Console.ReadLine();
                 char nav = input[0];
@@ -174,10 +178,10 @@ namespace ShellProj_Datastructures_Memory
                     default:
                         break;
                 }
-            
 
 
-                
+
+
 
                 //string input = Console.ReadLine();
                 //char nav = input[0];
@@ -186,35 +190,116 @@ namespace ShellProj_Datastructures_Memory
             }
 
 
-                /*
-                 * Loop this method untill the user inputs something to exit to main menue.
-                 * Create a switch with cases to enqueue items or dequeue items
-                 * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
-                */
-            }
+            /*
+             * Loop this method untill the user inputs something to exit to main menue.
+             * Create a switch with cases to enqueue items or dequeue items
+             * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
+            */
+        }
 
-            /// <summary>
-            /// Examines the datastructure Stack
-            /// </summary>
-            static void ExamineStack()
+        /// <summary>
+        /// Examines the datastructure Stack
+        /// </summary>
+        public static void ExamineStack()
         {
-                /*
-                 * Loop this method until the user inputs something to exit to main menue.
-                 * Create a switch with cases to push or pop items
-                 * Make sure to look at the stack after pushing and and poping to see how it behaves
-                */
-            }
 
-            static void CheckParanthesis()
-        {
-                /*
-                 * Use this method to check if the paranthesis in a string is Correct or incorrect.
-                 * Example of correct: (()), {}, [({})]
-                 * Example of incorrect: (()]), [), {[()}]
-                 */
+
+
+
+
+            Stack<string> stack = new Stack<string>();
+            int Qsize;
+
+            
+            while (true)
+
+            {
+                Console.WriteLine("Enter + to add the name to list or - to delete the last name: ");
+
+                Console.WriteLine("Press + or - ");
+                Console.WriteLine("Press * ");
+                string input = Console.ReadLine();
+                char nav = input[0];
+                switch (nav)
+                {
+                    case '+':
+                        Console.WriteLine("Name: ");
+                        string inputname = Console.ReadLine();
+                        stack.Push(inputname);
+                        Qsize = stack.Count;
+                        Console.WriteLine("The current Queue size is: " + Qsize);
+                        break;
+                          
+                        case '-':
+
+                        stack.Pop();
+                        Qsize = stack.Count;
+                        Console.WriteLine("stack has" +Qsize+ "people below");
+                        foreach (var item in stack)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        break;
+                   
+                    case '*':
+                        Console.WriteLine("Give a string input:");
+                        string inputString = Console.ReadLine();
+                        Stack<string> value= new Stack<string>();
+                        for (int i = 0; i < inputString.Length; i++)
+                        {
+                            value.Push(inputString.Substring(i, 1));
+                        }
+
+                        string resultstring = string.Empty;
+                        for (int i = 0; i < inputString.Length; i++)
+                        {
+                            resultstring += value.Pop();
+                        }
+                        Console.WriteLine("Reverse string -------------3"+resultstring);
+                        break;
+
+                }
             }
 
         }
-    }
+
+        private static string ReverseString(string output)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        //public static string ReverseString(string s)
+        //{
+        //    char[] arr = s.ToCharArray();
+        //    Array.Reverse(arr);
+        //    return new string(arr);
+
+        //}
+
+
+
+        /*
+         * Loop this method until the user inputs something to exit to main menue.
+         * Create a switch with cases to push or pop items
+         * Make sure to look at the stack after pushing and and poping to see how it behaves
+        */
+
+
+        static void CheckParanthesis()
+        {
+                    /*
+                     * Use this method to check if the paranthesis in a string is Correct or incorrect.
+                     * Example of correct: (()), {}, [({})]
+                     * Example of incorrect: (()]), [), {[()}]
+                     */
+                }
+
+            }
+        }
+    
+
 
 
