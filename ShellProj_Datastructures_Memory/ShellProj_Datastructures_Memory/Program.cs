@@ -330,7 +330,7 @@ namespace ShellProj_Datastructures_Memory
                             a = false;
                     }
                     else
-
+                         
                         continue;
 
                 }
