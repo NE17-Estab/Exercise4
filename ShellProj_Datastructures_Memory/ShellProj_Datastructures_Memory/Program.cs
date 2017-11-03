@@ -10,6 +10,7 @@ namespace ShellProj_Datastructures_Memory
     {
         private static object items;
         private static object stack;
+        private static IEnumerable<char> input;
 
         /// <summary>
         /// The main method, will handle the menues for the program
@@ -183,10 +184,7 @@ namespace ShellProj_Datastructures_Memory
 
 
 
-                //string input = Console.ReadLine();
-                //char nav = input[0];
-                //string value;
-                //int
+
             }
 
 
@@ -210,7 +208,7 @@ namespace ShellProj_Datastructures_Memory
             Stack<string> stack = new Stack<string>();
             int Qsize;
 
-            
+
             while (true)
 
             {
@@ -229,55 +227,55 @@ namespace ShellProj_Datastructures_Memory
                         Qsize = stack.Count;
                         Console.WriteLine("The current Queue size is: " + Qsize);
                         break;
-                          
-                        case '-':
+
+                    case '-':
 
                         stack.Pop();
                         Qsize = stack.Count;
-                        Console.WriteLine("stack has" +Qsize+ "people below");
+                        Console.WriteLine("stack has" + Qsize + "people below");
                         foreach (var item in stack)
                         {
                             Console.WriteLine(item);
                         }
                         break;
-                   
-                    case '*':
-                        Console.WriteLine("Give a string input:");
-                        string inputString = Console.ReadLine();
-                        Stack<string> value= new Stack<string>();
-                        for (int i = 0; i < inputString.Length; i++)
-                        {
-                            value.Push(inputString.Substring(i, 1));
-                        }
 
-                        string resultstring = string.Empty;
-                        for (int i = 0; i < inputString.Length; i++)
-                        {
-                            resultstring += value.Pop();
-                        }
-                        Console.WriteLine("Reverse string -------------3"+resultstring);
+
+                    case '*':
+                        ReverseString();
                         break;
 
+                    case '0':
+                        return;
+                    default:
+                        break;
                 }
             }
 
         }
-
-        private static string ReverseString(string output)
+        public static void ReverseString()
         {
-            throw new NotImplementedException();
+
+
+            Console.WriteLine("Give a string input:");
+            string inputString = Console.ReadLine();
+            Stack<string> value = new Stack<string>();
+            for (int i = 0; i < inputString.Length; i++)
+            {
+                value.Push(inputString.Substring(i, 1));
+            }
+
+            string resultstring = string.Empty;
+            for (int i = 0; i < inputString.Length; i++)
+            {
+                resultstring += value.Pop();
+            }
+            Console.WriteLine("Reverse string ------------- : " + resultstring);
         }
 
 
 
 
-        //public static string ReverseString(string s)
-        //{
-        //    char[] arr = s.ToCharArray();
-        //    Array.Reverse(arr);
-        //    return new string(arr);
 
-        //}
 
 
 
@@ -290,15 +288,96 @@ namespace ShellProj_Datastructures_Memory
 
         static void CheckParanthesis()
         {
-                    /*
-                     * Use this method to check if the paranthesis in a string is Correct or incorrect.
-                     * Example of correct: (()), {}, [({})]
-                     * Example of incorrect: (()]), [), {[()}]
-                     */
+            Console.WriteLine("Give Paranthesis: ");
+            bool a;
+            var input = Console.ReadLine();
+            //var stack = new Stack<char>();
+
+            //char[] allowedChars = { '(', '[', '{', ')', ']', '}' };
+
+            Dictionary<char, char> bracketPairs = new Dictionary<char, char>()
+            {
+            { '(', ')' },
+            { '{', '}' },
+            { '[', ']' },
+            { '<', '>' }
+            };
+
+            Stack<char> brackets = new Stack<char>();
+
+            try
+            {
+
+                foreach (char c in input)
+                {
+
+                    if (bracketPairs.Keys.Contains(c))
+                    {
+
+                        brackets.Push(c);
+                    }
+                    else
+
+                        if (bracketPairs.Values.Contains(c))
+                    {
+
+                        if (c == bracketPairs[brackets.First()])
+                        {
+                            brackets.Pop();
+                        }
+                        else
+
+                            a = false;
+                    }
+                    else
+
+                        continue;
+
                 }
 
             }
+            catch
+            {
+
+                a = false;
+            }
+            a = brackets.Count() == 0 ? true : false;
+
+
+            if (a == true)
+                Console.WriteLine("Well Form");
+            if (a == false)
+                Console.WriteLine("Not Well Form");
+            
         }
+        
+    }
+
+}
+
+
+
+
+
+
+
+
+            /*
+             * Use this method to check if the paranthesis in a string is Correct or incorrect.
+             * Example of correct: (()), {}, [({})]
+             * Example of incorrect: (()]), [), {[()}]
+             */
+
+
+
+
+        
+       
+    
+
+
+
+
     
 
 
