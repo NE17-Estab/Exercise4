@@ -291,9 +291,7 @@ namespace ShellProj_Datastructures_Memory
             Console.WriteLine("Give Paranthesis: ");
             bool a;
             var input = Console.ReadLine();
-            //var stack = new Stack<char>();
-
-            //char[] allowedChars = { '(', '[', '{', ')', ']', '}' };
+           
 
             Dictionary<char, char> bracketPairs = new Dictionary<char, char>()
             {
