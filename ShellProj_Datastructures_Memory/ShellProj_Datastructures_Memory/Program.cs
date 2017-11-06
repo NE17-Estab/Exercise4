@@ -105,32 +105,27 @@ namespace ShellProj_Datastructures_Memory
                         value = input.Substring(1);
                         theList.Add(value);
                         sizeOflist = theList.Count;
-                        Console.WriteLine("display the list added:" + value);
-                        Console.WriteLine("list added:" + value);
+                        Console.WriteLine("Display the list added:" + value);
+                        Console.WriteLine("List added:" + value);
+
                         break;
                     case '-':
                         value = input.Substring(1);
                         theList.Remove(value);
                         sizeOflist = theList.Count;
-                        Console.WriteLine("display the list sub:" + value);
-                        Console.WriteLine("list sub:" + value);
+                        Console.WriteLine("Display the list sub:" + value);
+                        Console.WriteLine("List sub:" + value);
+
                         break;
                     case '0':
                         return;
                     default:
                         break;
 
-                        //foreach (var item in theList)
-                        //{
-                        //    Console.WriteLine("List added:"+item);
-                        //}
-                        //Console.WriteLine("total value added to list:"+theList.Count);
-                        //Console.WriteLine("Capacity of the list:"+theList.Capacity);
-
 
                 }
 
-                Console.WriteLine(sizeOflist);
+                Console.WriteLine("Number of element:" + sizeOflist);
 
 
             }
@@ -150,6 +145,7 @@ namespace ShellProj_Datastructures_Memory
             {
                 Console.WriteLine("First In First Out Principle:");
                 Console.WriteLine("Enter + to add name in queue and - to delete first name from queue:");
+                Console.WriteLine("Enter '+' or '-'");
                 string input = Console.ReadLine();
                 char nav = input[0];
                 switch (nav)
@@ -181,19 +177,19 @@ namespace ShellProj_Datastructures_Memory
                 }
 
 
-
-
-
-
             }
 
 
-            /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch with cases to enqueue items or dequeue items
-             * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
-            */
+
         }
+
+
+        /*
+         * Loop this method untill the user inputs something to exit to main menue.
+         * Create a switch with cases to enqueue items or dequeue items
+         * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
+        */
+
 
         /// <summary>
         /// Examines the datastructure Stack
@@ -289,17 +285,12 @@ namespace ShellProj_Datastructures_Memory
         static void CheckParanthesis()
         {
             Console.WriteLine("Give Paranthesis: ");
-            bool a;
-            var input = Console.ReadLine();
-           
+            string input = Console.ReadLine();
+            bool check = true;
+
 
             Dictionary<char, char> bracketPairs = new Dictionary<char, char>()
-            {
-            { '(', ')' },
-            { '{', '}' },
-            { '[', ']' },
-            { '<', '>' }
-            };
+            {  { '(', ')' },{ '{', '}' },{ '[', ']' },{ '<', '>' }  };
 
             Stack<char> brackets = new Stack<char>();
 
@@ -315,48 +306,46 @@ namespace ShellProj_Datastructures_Memory
                         brackets.Push(c);
                     }
                     else
-
-                        if (bracketPairs.Values.Contains(c))
                     {
 
-                        if (c == bracketPairs[brackets.First()])
+                        if (bracketPairs.Values.Contains(c))
                         {
-                            brackets.Pop();
+
+                            if (c == bracketPairs[brackets.First()])
+                            {
+                                brackets.Pop();
+                            }
+                            else
+                            {
+                                check = false;
+                                brackets.Count();
+                            }
                         }
                         else
 
-                            a = false;
+                            continue;
+
                     }
-                    else
-                         
-                        continue;
 
                 }
-
             }
             catch
             {
 
-                a = false;
+                check = false;
+                brackets.Count();
             }
-            a = brackets.Count() == 0 ? true : false;
-
-
-            if (a == true)
-                Console.WriteLine("Well Form");
-            if (a == false)
-                Console.WriteLine("Not Well Form");
-            
+            if (brackets.Count() == 0 && check == true)
+            {
+                Console.WriteLine("Well Formed\n");
+            }
+            else
+            {
+                Console.WriteLine("Not Well Formed\n");
+            }
         }
-        
     }
-
 }
-
-
-
-
-
 
 
 
@@ -369,14 +358,14 @@ namespace ShellProj_Datastructures_Memory
 
 
 
-        
-       
-    
 
 
 
 
-    
+
+
+
+
 
 
 
